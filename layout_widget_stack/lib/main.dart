@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Stack Widget Example'),
         ),
-        body: Center(
+        body:  Center(
           child: Stack(
             children: <Widget>[
               Container(

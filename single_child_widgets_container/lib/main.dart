@@ -44,26 +44,22 @@ class MyButton extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("My Title")),
       body: Center(
-          child: Container(
-            padding: const
-            EdgeInsets.symmetric(horizontal: 20.0, vertical: 2.0),
-            decoration: const BoxDecoration(
-              border: Border(
-                top: BorderSide(width: 1.0, color: Color(0xFFFFDFDFDF)),
-                left: BorderSide(width: 1.0, color: Color(0xFFFFDFDFDF)),
-                right: BorderSide(width: 1.0, color: Color(0xFFFF7F7F7F)),
-                bottom: BorderSide(width: 1.0, color: Color(0xFFFF7F7F7F)),
-              ),
-              color: Colors.grey,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0),
+          decoration: const BoxDecoration(
+            border: Border(
+              top: BorderSide(width: 10.0, color: Colors.white),
+              left: BorderSide(width: 10.0, color: Colors.white),
+              right: BorderSide(width: 10.0, color: Colors.white),
+              bottom: BorderSide(width: 10.0, color: Colors.white),
             ),
-            child: const Text(
-                'OK',textAlign: TextAlign.center, style: TextStyle(color: Colors.black)
-            ),
+            color: Colors.grey,
           ),
+          child: const Text('OK',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black)),
+        ),
       ),
     );
   }
 }
-
-
-
