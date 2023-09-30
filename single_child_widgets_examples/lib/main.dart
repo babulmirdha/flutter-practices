@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text("Single child widgets examples")),
-        body:  SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               const Padding(
@@ -27,11 +27,13 @@ class MyApp extends StatelessWidget {
                 child: Text("Padding: EdgeInsets.only"),
               ),
               const Align(
-                alignment: Alignment.topRight, // Aligns the child widget to the top-right corner
+                alignment: Alignment.topRight,
+                // Aligns the child widget to the top-right corner
                 child: Text("Align: Alignment.topRight"),
               ),
               const Align(
-                alignment: FractionalOffset(0.5, 0.8), // Aligns the child widget 50% from the left and 80% from the top
+                alignment: FractionalOffset(0.5, 0.8),
+                // Aligns the child widget 50% from the left and 80% from the top
 
                 child: Text("Align: FractionalOffset"),
               ),
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
                 child: Image.asset('assets/bm.png'),
               ),
               AspectRatio(
-                aspectRatio: 16/9,
+                aspectRatio: 16 / 9,
                 child: Container(
                   color: Colors.blue,
                 ),
@@ -63,18 +65,8 @@ class MyApp extends StatelessWidget {
                   'Baseline',
                   style: TextStyle(fontSize: 30),
                 ),
-              ),FractionallySizedBox(
-                widthFactor: 0.5,
-                heightFactor: 0.3,
-                child: Container(
-                  color: Colors.green,
-                ),
-              )
-
-
-
-
-
+              ),
+          
             ],
           ),
         ),
