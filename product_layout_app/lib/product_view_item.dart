@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ProductBox extends StatelessWidget {
+class ProductViewItem extends StatelessWidget {
   final String name;
   final String description;
   final int price;
   final String image;
 
-  const ProductBox(
+  const ProductViewItem(
       {super.key,
       required this.name,
       required this.description,

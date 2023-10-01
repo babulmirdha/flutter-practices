@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:product_layout_app/product_box.dart';
+import 'package:product_layout_app/product_view_item.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,33 +59,33 @@ class MyHomePage extends StatelessWidget {
           shrinkWrap: true,
           padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
           children: const <Widget>[
-            ProductBox(
+            ProductViewItem(
                 name: "iPhone",
                 description: "iPhone is the stylist phone ever",
                 price: 1000,
                 image: "iphone.png"),
-            ProductBox(
+            ProductViewItem(
                 name: "Pixel",
                 description: "Pixel is the most featureful phone ever",
                 price: 800,
                 image: "pixel.png"),
-            ProductBox(
+            ProductViewItem(
                 name: "Laptop",
                 description: "Laptop is most productive development tool",
                 price: 2000,
                 image: "laptop.png"),
-            ProductBox(
+            ProductViewItem(
                 name: "Tablet",
                 description:
                     "Tablet is the most useful device ever for meeting",
                 price: 1500,
                 image: "tablet.png"),
-            ProductBox(
+            ProductViewItem(
                 name: "Pendrive",
                 description: "Pendrive is useful storage medium",
                 price: 100,
                 image: "pendrive.png"),
-            ProductBox(
+            ProductViewItem(
                 name: "Floppy Drive",
                 description: "Floppy drive is useful rescue storage medium",
                 price: 20,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:single_child_widgets_examples/ui_screens/AlignScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/AspectRatioScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/BaselineScreen.dart';
+import 'package:single_child_widgets_examples/ui_screens/CardScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/ConstrainedBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/CustomSingleChildLayoutScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/FittedBoxScreen.dart';
@@ -66,7 +67,8 @@ class MyDrawer extends StatelessWidget {
           drawerListItem(context, widget: const OverflowBoxScreen()),
           drawerListItem(context, widget: const SizedOverflowBoxScreen()),
           drawerListItem(context, widget: const TransformScreen()),
-          drawerListItem(context, widget:  CustomSingleChildLayoutScreen()),
+          drawerListItem(context, widget:  const CustomSingleChildLayoutScreen()),
+          drawerListItem(context, widget:  const CardScreen()),
         ],
       ),
     );
