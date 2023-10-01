@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'MyDrawer.dart';
-import 'ui_screens/SettingsScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,19 +16,6 @@ SingleChildScrollView buildSingleChildScrollView() {
   );
 }
 
-Widget fractionallySizedBoxExample() {
-  return FractionallySizedBox(
-    widthFactor: 0.5,
-    heightFactor: 0.3,
-    child: Container(
-      color: Colors.green,
-    ),
-  );
-}
-
-
-
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -40,7 +26,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text("Single child widgets examples")),
         drawer: const MyDrawer(), // Add the custom drawer here
-        body: fractionallySizedBoxExample(),
+        body: buildSingleChildScrollView(),
       ),
     );
   }
