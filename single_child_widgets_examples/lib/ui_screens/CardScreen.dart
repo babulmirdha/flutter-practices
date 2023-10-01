@@ -14,7 +14,7 @@ class CardScreen extends StatelessWidget  {
       ),
       body:  Card(
         elevation: 5, // Determines the shadow intensity
-        margin: EdgeInsets.all(16), // Margin around the card
+        margin: const EdgeInsets.all(16), // Margin around the card
         child: Column(
           children: <Widget>[
             const ListTile(
