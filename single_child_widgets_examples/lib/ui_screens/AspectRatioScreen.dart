@@ -13,7 +13,7 @@ class AspectRatioScreen extends StatelessWidget  {
       body: AspectRatio(
         aspectRatio: 16 / 9,
         child: Container(
-          color: Colors.blue,
+          color: Colors.blueGrey,
         ),
       ),
     );

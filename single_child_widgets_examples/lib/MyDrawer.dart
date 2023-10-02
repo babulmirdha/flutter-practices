@@ -5,6 +5,7 @@ import 'package:single_child_widgets_examples/ui_screens/BaselineScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/CardScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/ConstrainedBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/CustomSingleChildLayoutScreen.dart';
+import 'package:single_child_widgets_examples/ui_screens/ExpandedScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/FittedBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/FractionallySizedBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/IntrinsicHeightScreen.dart';
@@ -15,7 +16,6 @@ import 'package:single_child_widgets_examples/ui_screens/OverflowBoxScreen.dart'
 import 'package:single_child_widgets_examples/ui_screens/PaddingScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/SizedOverflowBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/TransformScreen.dart';
-import 'package:single_child_widgets_examples/ui_screens/CustomSingleChildLayoutWidget.dart';
 
 Widget drawerListItem(BuildContext context, {required Widget widget}) {
   return ListTile(
@@ -69,6 +69,7 @@ class MyDrawer extends StatelessWidget {
           drawerListItem(context, widget: const TransformScreen()),
           drawerListItem(context, widget:  const CustomSingleChildLayoutScreen()),
           drawerListItem(context, widget:  const CardScreen()),
+          drawerListItem(context, widget:  const ExpandedScreen()),
         ],
       ),
     );

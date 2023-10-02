@@ -12,10 +12,14 @@ class ExpandedScreen extends StatelessWidget {
       body: Row(
         children: <Widget>[
           Expanded(
-            child: Container(color: Colors.red),
+            flex: 2,
+            child: Container(color: Colors.blue),
           ),
           Expanded(
             child: Container(color: Colors.green),
+          ),
+          Expanded(
+            child: Container(color: Colors.red),
           ),
         ],
       ),
