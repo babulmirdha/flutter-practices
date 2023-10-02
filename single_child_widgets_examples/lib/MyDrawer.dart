@@ -16,6 +16,7 @@ import 'package:single_child_widgets_examples/ui_screens/OverflowBoxScreen.dart'
 import 'package:single_child_widgets_examples/ui_screens/PaddingScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/SizedOverflowBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/TransformScreen.dart';
+import 'menu_items.dart';
 
 Widget drawerListItem(BuildContext context, {required Widget widget}) {
   return ListTile(
@@ -53,23 +54,28 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
           ),
-          drawerListItem(context, widget: const PaddingScreen()),
-          drawerListItem(context, widget: const AlignScreen()),
-          drawerListItem(context, widget: const FittedBoxScreen()),
-          drawerListItem(context, widget: const AspectRatioScreen()),
-          drawerListItem(context, widget: const ConstrainedBoxScreen()),
-          drawerListItem(context, widget: const BaselineScreen()),
-          drawerListItem(context, widget: const FractionallySizedBoxScreen()),
-          drawerListItem(context, widget: const IntrinsicHeightScreen()),
-          drawerListItem(context, widget: const IntrinsicWidthScreen()),
-          drawerListItem(context, widget: const LimitedBoxScreen()),
-          drawerListItem(context, widget: const OffstageScreen()),
-          drawerListItem(context, widget: const OverflowBoxScreen()),
-          drawerListItem(context, widget: const SizedOverflowBoxScreen()),
-          drawerListItem(context, widget: const TransformScreen()),
-          drawerListItem(context, widget:  const CustomSingleChildLayoutScreen()),
-          drawerListItem(context, widget:  const CardScreen()),
-          drawerListItem(context, widget:  const ExpandedScreen()),
+
+          // drawerListItem(context, widget: const AlignScreen()),
+          // drawerListItem(context, widget: const AspectRatioScreen()),
+          // drawerListItem(context, widget: const BaselineScreen()),
+          // drawerListItem(context, widget:  const CardScreen()),
+          // drawerListItem(context, widget: const ConstrainedBoxScreen()),
+          // drawerListItem(context, widget:  const CustomSingleChildLayoutScreen()),
+          // drawerListItem(context, widget:  const ExpandedScreen()),
+          // drawerListItem(context, widget: const FittedBoxScreen()),
+          // drawerListItem(context, widget: const FractionallySizedBoxScreen()),
+          // drawerListItem(context, widget: const IntrinsicHeightScreen()),
+          // drawerListItem(context, widget: const IntrinsicWidthScreen()),
+          // drawerListItem(context, widget: const LimitedBoxScreen()),
+          // drawerListItem(context, widget: const OffstageScreen()),
+          // drawerListItem(context, widget: const OverflowBoxScreen()),
+          // drawerListItem(context, widget: const PaddingScreen()),
+          // drawerListItem(context, widget: const SizedOverflowBoxScreen()),
+          // drawerListItem(context, widget: const TransformScreen()),
+
+          for(var item in widgetList)
+            drawerListItem(context, widget: item)
+
         ],
       ),
     );

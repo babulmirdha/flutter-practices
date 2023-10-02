@@ -9,8 +9,8 @@ class ExpandedScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(runtimeType.toString()),
       ),
-      body: Row(
-        children: <Widget>[
+      body: Column(
+        children: [
           Expanded(
             flex: 2,
             child: Container(color: Colors.blue),
