@@ -16,6 +16,7 @@ import 'package:single_child_widgets_examples/ui_screens/OverflowBoxScreen.dart'
 import 'package:single_child_widgets_examples/ui_screens/PaddingScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/SizedOverflowBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/TransformScreen.dart';
+import 'package:single_child_widgets_examples/ui_screens/VideoPlayerScreen.dart';
 
 var widgetList = <Widget>[
   const AlignScreen(),
@@ -35,4 +36,5 @@ var widgetList = <Widget>[
   const PaddingScreen(),
   const SizedOverflowBoxScreen(),
   const TransformScreen(),
+  const VideoPlayerScreen(),
 ];
