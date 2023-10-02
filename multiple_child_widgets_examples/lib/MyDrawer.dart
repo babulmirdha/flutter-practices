@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:multiple_child_widgets_examples/ui_screens/ColumnScreen.dart';
-import 'package:multiple_child_widgets_examples/ui_screens/RowScreen.dart';
-import 'package:multiple_child_widgets_examples/ui_screens/GridViewScreen.dart';
-import 'package:multiple_child_widgets_examples/ui_screens/ListViewScreen.dart';
-import 'package:multiple_child_widgets_examples/ui_screens/TableScreen.dart';
-import 'package:multiple_child_widgets_examples/ui_screens/my_flow.dart';
-
-import 'ui_screens/StackScreen.dart';
+import 'package:multiple_child_widgets_examples/menu_items.dart';
 
 Widget drawerListItem(BuildContext context, {required Widget widget}) {
   return ListTile(
@@ -44,14 +37,8 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
           ),
-
-          drawerListItem(context, widget: const RowScreen()),
-          drawerListItem(context, widget: const ColumnScreen()),
-          drawerListItem(context, widget: const StackScreen()),
-          drawerListItem(context, widget: const ListViewScreen()),
-          drawerListItem(context, widget: const TableScreen()),
-          drawerListItem(context, widget: const GridViewScreen()),
-          drawerListItem(context, widget: const MyFlow()),
+          
+          for(var item in widgetList) drawerListItem(context, widget: item)
 
         ],
       ),
