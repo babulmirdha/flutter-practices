@@ -23,6 +23,18 @@ class _RatingBoxState extends State<RatingBox> {
       _rating = 3;
     });
   }
+  void _setRatingAsFour() {
+    setState(() {
+      _rating = 4;
+    });
+  }
+  void _setRatingAsFive() {
+    setState(() {
+      _rating = 5;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     double _size = 20;
     print(_rating);
@@ -32,7 +44,7 @@ class _RatingBoxState extends State<RatingBox> {
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
         Container(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           child: IconButton(
             icon: (
                 _rating >= 1?
@@ -51,7 +63,7 @@ class _RatingBoxState extends State<RatingBox> {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           child: IconButton(
             icon: (
                 _rating >= 2?
@@ -70,10 +82,29 @@ class _RatingBoxState extends State<RatingBox> {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           child: IconButton(
             icon: (
                 _rating >= 3 ?
+                Icon(
+                  Icons.star,
+                  size: _size,
+                )
+                    : Icon(
+                  Icons.star_border,
+                  size: _size,
+                )
+            ),
+            color: Colors.red[500],
+            onPressed: _setRatingAsThree,
+            iconSize: _size,
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.all(0),
+          child: IconButton(
+            icon: (
+                _rating >= 4 ?
                 Icon(
                   Icons.star,
                   size: _size,
