@@ -14,6 +14,7 @@ import 'package:single_child_widgets_examples/ui_screens/LimitedBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/OffstageScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/OverflowBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/PaddingScreen.dart';
+import 'package:single_child_widgets_examples/ui_screens/SizedBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/SizedOverflowBoxScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/TransformScreen.dart';
 import 'package:single_child_widgets_examples/ui_screens/VideoPlayerScreen.dart';
@@ -34,6 +35,7 @@ var widgetList = <Widget>[
   const OffstageScreen(),
   const OverflowBoxScreen(),
   const PaddingScreen(),
+  const SizedBoxScreen(),
   const SizedOverflowBoxScreen(),
   const TransformScreen(),
   const VideoPlayerScreen(),

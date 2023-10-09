@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SizedOverflowBoxScreen extends StatelessWidget {
-  const SizedOverflowBoxScreen({super.key});
+class SizedBoxScreen extends StatelessWidget {
+  const SizedBoxScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +24,17 @@ class SizedOverflowBoxScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20), // Adds vertical spacing of 20 pixels
-            SizedOverflowBox(
-              size: const Size(150, 150), // Specifies the maximum size of the child
+            const SizedBox(
+              height: 20, // Adds a vertical spacing of 20 pixels
+            ),
+            SizedBox(
+              width: 150, // Adds a horizontal spacing of 150 pixels
+              height: 150, // Adds a vertical spacing of 150 pixels
               child: Container(
                 color: Colors.green,
                 child: const Center(
                   child: Text(
-                    'SizedOverflowBox with fixed size and overflow content',
-                    textAlign: TextAlign.center,
+                    'SizedBox with fixed size',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

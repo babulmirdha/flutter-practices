@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'MyCustomIconPainter.dart';
-
 class ConstrainedBoxScreen extends StatelessWidget  {
 
 

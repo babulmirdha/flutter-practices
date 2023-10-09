@@ -16,6 +16,7 @@ class IntrinsicHeightScreen extends StatelessWidget  {
           children: <Widget>[
             Container(width: 50, height: 100, color: Colors.blue),
             Container(width: 150, height: 50, color: Colors.green),
+            Container(width: 100, height: 70, color: Colors.red),
           ],
         ),
       )

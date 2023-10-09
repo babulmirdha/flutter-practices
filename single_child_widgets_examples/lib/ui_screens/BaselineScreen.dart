@@ -32,7 +32,7 @@ class BaselineScreen extends StatelessWidget  {
                 children: <Widget>[
                   Image.asset('assets/bm.png', height: 80),
                   const Baseline(
-                    baseline: 80,
+                    baseline: 30,
                     baselineType: TextBaseline.alphabetic,
                     child: Text('Image Caption'),
                   ),
