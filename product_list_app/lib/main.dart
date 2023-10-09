@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:product_layout_app/product_view_item.dart';
+import 'package:product_layout_app/ProductItem.dart';
+import 'ProductDetailWidget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,6 +53,15 @@ class MyHomePage extends StatelessWidget {
 
   final String title;
 
+  void _onItemSelected(ProductItem item, BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ProductDetailWidget(item: item),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,38 +69,56 @@ class MyHomePage extends StatelessWidget {
         body: ListView(
           shrinkWrap: true,
           padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
-          children: const <Widget>[
+          children:  <Widget>[
             ProductViewItem(
-                name: "iPhone",
-                description: "iPhone is the stylist phone ever",
-                price: 1000,
-                image: "iphone.png"),
+                item: const ProductItem(
+                    name: "iPhone",
+                    description: "iPhone is the stylist phone ever",
+                    price: 1000,
+                    image: "iphone.png"),
+                onItemSelected: _onItemSelected
+            ),
             ProductViewItem(
-                name: "Pixel",
-                description: "Pixel is the most featureful phone ever",
-                price: 800,
-                image: "pixel.png"),
+                item: const ProductItem(
+                    name: "Pixel",
+                    description: "Pixel is the most featureful phone ever",
+                    price: 800,
+                    image: "pixel.png"),
+                onItemSelected: _onItemSelected
+            ),
             ProductViewItem(
-                name: "Laptop",
-                description: "Laptop is most productive development tool",
-                price: 2000,
-                image: "laptop.png"),
+                item: const ProductItem(
+                    name: "Laptop",
+                    description: "Laptop is most productive development tool",
+                    price: 2000,
+                    image: "laptop.png"),
+                onItemSelected: _onItemSelected
+            ),
             ProductViewItem(
-                name: "Tablet",
-                description:
-                    "Tablet is the most useful device ever for meeting",
-                price: 1500,
-                image: "tablet.png"),
+                item: const ProductItem(
+                    name: "Tablet",
+                    description:
+                        "Tablet is the most useful device ever for meeting",
+                    price: 1500,
+                    image: "tablet.png"),
+                onItemSelected: _onItemSelected
+            ),
             ProductViewItem(
-                name: "Pendrive",
-                description: "Pendrive is useful storage medium",
-                price: 100,
-                image: "pendrive.png"),
+                item: const ProductItem(
+                    name: "Pendrive",
+                    description: "Pendrive is useful storage medium",
+                    price: 100,
+                    image: "pendrive.png"),
+                onItemSelected: _onItemSelected
+            ),
             ProductViewItem(
-                name: "Floppy Drive",
-                description: "Floppy drive is useful rescue storage medium",
-                price: 20,
-                image: "floppy.png"),
+                item: const ProductItem(
+                    name: "Floppy Drive",
+                    description: "Floppy drive is useful rescue storage medium",
+                    price: 20,
+                    image: "floppy.png"),
+                onItemSelected: _onItemSelected
+            ),
           ],
         ));
   }
