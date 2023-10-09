@@ -14,11 +14,19 @@ class ListViewScreen extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.map),
             title: Text('Map'),
+            subtitle: Text('This is map'),
+            iconColor: Colors.blue,
           ),
           ListTile(
             leading: Icon(Icons.photo),
             title: Text('Album'),
+            subtitle: Text('This is Album'),
           ),
+          ListTile(
+            leading: Icon(Icons.camera),
+            title: Text('Camera'),
+            subtitle: Text('This is Camera'),
+          )
           // Add more list items here
         ],
       ),

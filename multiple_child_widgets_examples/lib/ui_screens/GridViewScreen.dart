@@ -10,8 +10,9 @@ class GridViewScreen extends StatelessWidget {
         title: Text(runtimeType.toString()),
       ),
       body: GridView.count(
-        crossAxisCount: 2, // Number of columns
-        children: List.generate(4, (index) {
+        crossAxisCount: 3, // Number of columns
+        children: [
+          ...List.generate(9, (index) {
           return Center(
             child: Text(
               'Item $index',
@@ -19,6 +20,12 @@ class GridViewScreen extends StatelessWidget {
             ),
           );
         }),
+          ...[
+            const Center(child: Text("My Item 1")),
+            const Center(child: Text("My Item 2")),
+          ]
+
+        ],
       ),
     );
   }
