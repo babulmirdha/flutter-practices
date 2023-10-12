@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:product_layout_app/ProductItem.dart';
+import 'package:product_layout_app/Product.dart';
 
 
 class ProductDetailWidget extends StatelessWidget {
-  final ProductItem item;
+  final Product item;
 
   const ProductDetailWidget({super.key, required this.item});
 

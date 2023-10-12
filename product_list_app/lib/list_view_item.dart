@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:product_layout_app/ProductItem.dart';
+import 'package:product_layout_app/Product.dart';
 
-class ProductViewItem extends StatelessWidget {
+class ListViewItem extends StatelessWidget {
 
- final ProductItem item;
+ final Product item;
 
- final Function(ProductItem, BuildContext) onItemSelected;
+ final Function(Product, BuildContext) onItemSelected;
 
-  const ProductViewItem(
+  const ListViewItem(
       {super.key,
       required this.item, required this.onItemSelected});
 
