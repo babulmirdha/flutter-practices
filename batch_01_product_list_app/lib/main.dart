@@ -26,9 +26,9 @@ class MyHomePage extends StatelessWidget {
 
     List<Product> list = [];
 
-    list.add(Product("iPhone", "This is iPhone", 80000 ));
-    list.add(Product("Xi Redme", "This is Xi Redme", 50000 ));
-    list.add(Product("Oppo", "This is Oppo", 30000 ));
+    list.add(Product( "iphone.png" ,"iPhone", "This is iPhone", 80000 ));
+    list.add(Product("floppy.png", "Floppy" , "This is Xi Redme", 50000 ));
+    list.add(Product("pixel.png", "Pixel", "This is Oppo", 30000 ));
 
     return list;
   }
@@ -52,5 +52,4 @@ class MyHomePage extends StatelessWidget {
         )
     );
   }
-  
 }
