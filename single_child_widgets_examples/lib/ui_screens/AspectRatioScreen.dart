@@ -33,7 +33,7 @@ class AspectRatioScreen extends StatelessWidget  {
                   color: Colors.blue,
                 ),
                 child: const Center(
-                  child: Text('A', style: TextStyle(color: Colors.white)),
+                  child: Text('Babul Mirdha', style: TextStyle(color: Colors.white)),
                 ),
               ),
             ),
