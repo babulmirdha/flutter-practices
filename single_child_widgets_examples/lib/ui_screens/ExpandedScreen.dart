@@ -19,7 +19,11 @@ class ExpandedScreen extends StatelessWidget {
             child: Container(color: Colors.green),
           ),
           Expanded(
-            child: Container(color: Colors.red),
+            child: Container(color: Colors.red,
+              width: 500,
+              child: Center(child: Text("Himel")),
+
+            ),
           ),
         ],
       ),

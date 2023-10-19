@@ -21,8 +21,8 @@ class AspectRatioScreen extends StatelessWidget  {
               ),
             ),
             AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Image.network('https://leads.com.bd/wp-content/uploads/2022/07/Babul-Mirdha.png', fit: BoxFit.cover),
+              aspectRatio: 16 / 5,
+              child: Image.network('https://leads.com.bd/wp-content/uploads/2022/07/Babul-Mirdha.png', fit: BoxFit.fitHeight),
             ),
             //5. Circular Avatars:
             AspectRatio(

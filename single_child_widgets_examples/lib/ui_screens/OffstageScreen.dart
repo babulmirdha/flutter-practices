@@ -12,7 +12,9 @@ class OffstageScreen extends StatelessWidget {
       body: const Offstage(
         offstage: false,
         // a boolean variable indicating whether to hide the child or not
-        child: Text('This is offstage'),
+        child: Center(child: Text('This is offstage',
+        style: TextStyle(color: Colors.green, fontSize: 30),
+        )),
       ),
     );
   }
