@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_transaction_example/transaction_page.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'transaction.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized()
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TransactionAdapter());
   await Hive.openBox<Transaction>("transactions");
