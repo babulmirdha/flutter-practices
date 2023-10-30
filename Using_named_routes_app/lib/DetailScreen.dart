@@ -7,7 +7,12 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Details"),),
-      body: const Center(child: Text("Details Body"))
+      body:  Center(child: TextButton(onPressed: (){
+        Navigator.pop(context);
+        // Navigator.pushNamed(context, '/');
+      },
+      child: Text("Back to Home"),
+      ))
       ,
     );
   }

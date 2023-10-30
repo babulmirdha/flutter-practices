@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, '/details');
           },
-          child: const Text("Click me"),
+          child: const Text("Click me to go details"),
       ),
        )
       ,
