@@ -18,26 +18,41 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: const MyHomePage(),
+      home: const HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+  @override
+  State<HomePage> createState() => _HomePageState();
 
-  List<Product> getProductList() {
-    List<Product> list = [];
+}
 
-    list.add(Product("iphone.png", "iPhone", "This is iPhone", 80000));
-    list.add(Product("floppy.png", "Floppy disk", "This is Floppy disk", 50));
-    list.add(Product("pendrive.png", "Pen drive", "This is Pendrive", 1000));
-
-    return list;
+class _HomePageState extends State<HomePage> {
 
 
 
+
+  List<Product> _productList = [];
+
+void prepareProductList() {
+
+
+  List<Product> list = [];
+
+  list.add(Product("iphone.png", "iPhone", "This is iPhone", 80000));
+  list.add(Product("floppy.png", "Floppy disk", "This is Floppy disk", 50));
+  list.add(Product("pendrive.png", "Pen drive", "This is Pendrive", 1000));
+    
+    setState(() {
+      _productList = list;
+    });
+    
   }
+
+
 
   Future<String> loadProductsAsString() async {
     return await rootBundle.loadString('assets/products.json');
@@ -48,15 +63,7 @@ class MyHomePage extends StatelessWidget {
         .loadString('assets/products.json');
   }
 
-  @override
-  Widget build(BuildContext context) {
-    var productList = getProductList();
-
-    // List<ListViewItem> listViewItems = [];
-    // for(var product in productList){
-    //   listViewItems.add(ListViewItem(product: product));
-    // }
-
+  loadProductList(){
     var futureJson = loadProductsAsString();
 
     futureJson.then((value) {
@@ -68,8 +75,36 @@ class MyHomePage extends StatelessWidget {
             Product(map['image_name'], map['name'], map['desc'], map['price']));
       }
 
-      return products;
+      setState(() {
+        _productList = products;
+      });
+
     });
+  }
+
+
+  @override
+  void initState() {
+
+    // prepareProductList();
+
+    loadProductList();
+
+    // List<ListViewItem> listViewItems = [];
+    // for(var product in productList){
+    //   listViewItems.add(ListViewItem(product: product));
+    // }
+
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+
+
+
 
 
     return Scaffold(
@@ -79,11 +114,14 @@ class MyHomePage extends StatelessWidget {
       // )
 
       body: ListView.builder(
-        itemCount: productList.length,
+        itemCount: _productList.length,
         itemBuilder: (context, index) {
-          return ListViewItem(product: productList[index]);
+          return ListViewItem(product: _productList[index]);
         },
       ),
     );
   }
+
+
 }
+
