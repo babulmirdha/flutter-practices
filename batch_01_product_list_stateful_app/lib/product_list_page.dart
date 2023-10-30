@@ -9,15 +9,13 @@ import 'product.dart';
 
 class ProductListPage extends StatefulWidget {
   const ProductListPage({super.key});
+
   @override
   State<ProductListPage> createState() => _ProductListPageState();
 
 }
 
 class _ProductListPageState extends State<ProductListPage> {
-
-
-
 
   List<Product> _productList = [];
 
@@ -35,7 +33,7 @@ void prepareProductList() {
 
   }
 
-  Future<String> loadProductsAsString() async {
+  Future<String> readProductsAsString() async {
     return await rootBundle.loadString('assets/products.json');
   }
 
@@ -44,24 +42,28 @@ void prepareProductList() {
         .loadString('assets/products.json');
   }
 
-  loadProductList(){
-    var futureJson = loadProductsAsString();
+  loadProductListFromJsonFile(){
 
-    futureJson.then((value) {
+    var productListString = readProductsAsString();
+
+    productListString.then((value) {
       var list = jsonDecode(value);
 
-     // List<Product> products = [];
+     List<Product> products = [];
+
       for (var map in list) {
-        setState(() {
-          _productList.add(
+
+        // setState(() {
+        products.add(
               Product(map['image_name'], map['name'], map['desc'], map['price']));
-        });
+        // });
+
 
       }
 
-      // setState(() {
-      //   _productList = products;
-      // });
+      setState(() {
+        _productList = products;
+      });
 
     });
   }
@@ -72,18 +74,13 @@ void prepareProductList() {
 
     // prepareProductList();
 
-    loadProductList();
+    loadProductListFromJsonFile();
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
-
-
-
-
 
     return Scaffold(
       appBar: AppBar(),
