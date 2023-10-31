@@ -2,13 +2,19 @@
   {
     "name": "iPhone",
     "desc": "This is iPhone",
-    "price": 80000,
+    "price": 80000.0,
     "image_name": "iphone.png"
   },
   {
     "name": "Floppy Disk",
     "desc": "This is Floppy Disk",
-    "price": 25,
+    "price": 25.0,
     "image_name": "floppy.png"
+  },
+  {
+    "name": "Google Pixel",
+    "desc": "This is Google Pixel",
+    "price": 25000.0,
+    "image_name": "pixel.png"
   }
 ]
