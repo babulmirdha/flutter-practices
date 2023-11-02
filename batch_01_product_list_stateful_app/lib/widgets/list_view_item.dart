@@ -1,6 +1,8 @@
-import 'package:batch_01_product_list_app/product.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../models/product.dart';
 
 class ListViewItem extends StatelessWidget {
   Product product;
