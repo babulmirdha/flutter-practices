@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool positive=false;
+  bool positive = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body:SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-        child: Text(AppLocalizations.of(context)!.bangladesh_history),
+        child: Column(
+          children: [
+            Text(AppLocalizations.of(context)!.bangladesh, style: const TextStyle( fontSize: 25),),
+            Text(AppLocalizations.of(context)!.bangladesh_history),
+          ],
+        ),
       )
 
     );

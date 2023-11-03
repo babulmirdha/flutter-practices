@@ -15,14 +15,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  
-   Locale _locale=const Locale('en');
-   setLocal(Locale locale){
-    setState(() {
-      _locale=locale;
-    });
+  Locale _locale = const Locale('en');
 
-   }
+  setLocal(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,19 +32,20 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      locale:_locale,
+      locale: _locale,
       localizationsDelegates: const [
-        AppLocalizations.delegate, 
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [
-    Locale('en'), // English
-    Locale('bn'), // Bangla
-  ],
-      home: HomeScreen(setLocal:setLocal,),
+        Locale('en'), // English
+        Locale('bn'), // Bangla
+      ],
+      home: HomeScreen(
+        setLocal: setLocal,
+      ),
     );
   }
 }
-
