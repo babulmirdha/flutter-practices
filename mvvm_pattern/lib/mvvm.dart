@@ -1,7 +1,10 @@
-// Model
+
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+
+// Model
 class User {
   String name;
   String email;
@@ -22,6 +25,8 @@ class UserProfileViewModel extends ChangeNotifier {
 
 // View
 class UserProfilePage extends StatelessWidget {
+  const UserProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     var viewModel = Provider.of<UserProfileViewModel>(context);
