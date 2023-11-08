@@ -68,12 +68,18 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _initializeStream() {
+
     // Simulating real-time updates by adding data to the stream
     Future.delayed(const Duration(seconds: 3), () {
       _dataStreamController.add("First update");
     });
+
     Future.delayed(const Duration(seconds: 5), () {
       _dataStreamController.add("Second update");
+    });
+
+    Future.delayed(const Duration(seconds: 8), () {
+      _dataStreamController.add("Third update");
     });
   }
 
