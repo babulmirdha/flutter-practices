@@ -9,16 +9,13 @@ import 'dart:async';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-
 late Future<Database> database;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- // await Hive.initFlutter();
-  // var box = await Hive.openBox('testBox');
 
   // Open the database and store the reference.
-   database = openDatabase(
+  database = openDatabase(
     // Set the path to the database. Note: Using the `join` function from the
     // `path` package is best practice to ensure the path is correctly
     // constructed for each platform.
@@ -54,14 +51,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -84,7 +78,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
   // A method that retrieves all the travels from the travels table.
   Future<List<Travel>> travels() async {
     // Get a reference to the database.
@@ -96,10 +89,9 @@ class _HomePageState extends State<HomePage> {
     // Convert the List<Map<String, dynamic> into a List<travel>.
     return List.generate(maps.length, (i) {
       return Travel(
-        id: maps[i]['id'] as int,
-        name: maps[i]['name'] as String,
-        picture: maps[i]["picture"]
-      );
+          id: maps[i]['id'] as int,
+          name: maps[i]['name'] as String,
+          picture: maps[i]["picture"]);
     });
   }
 
@@ -113,35 +105,35 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () async{
+              onTap: () async {
                 try {
-                  final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-                  if(image == null) return;
-                  final imageTemp = File(image.path);
-                  setState(() => this.image = imageTemp);
-                } on PlatformException catch(e) {
+                  final image = await ImagePicker()
+                      .pickImage(source: ImageSource.gallery);
+                  if (image == null) return;
+                  final newImage = File(image.path);
+                  setState(() => this.image = newImage);
+                } on PlatformException catch (e) {
                   print('Failed to pick image: $e');
                 }
               },
-              child: image==null?
-              Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.green
-                ),
-              ):Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.green
-                ),
-                child: Image.file(image!),
-              ),
+              child: image == null
+                  ? Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.green),
+                    )
+                  : Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.green),
+                      child: Image.file(image!),
+                    ),
             ),
             TextField(
               controller: controller,
@@ -150,39 +142,34 @@ class _HomePageState extends State<HomePage> {
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 50,),
-            ElevatedButton(onPressed: (){
+            const SizedBox(
+              height: 50,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  print("clicked");
 
+                  var data = image?.readAsBytesSync();
 
-              print("clicked");
+                  var travel =
+                      Travel(name: controller.text.trim(), picture: data);
 
+                  insertTravel(travel);
 
-              var data  = image?.readAsBytesSync();
+                  print(travels());
 
-              var travel = Travel( name: controller.text.trim(), picture:data );
+                  Future<List<Travel>> list = travels();
 
-              insertTravel(travel);
-
-             print(travels()) ;
-
-            Future<List<Travel>> list = travels();
-
-
-            list.then((value) {
-
-              value.forEach((element) {
-
-                print(element.name);
-              });
-
-            });
-
-
-            }, child: const Text("Save"))
+                  list.then((value) {
+                    value.forEach((element) {
+                      print(element.name);
+                    });
+                  });
+                },
+                child: const Text("Save"))
           ],
         ),
       ),
     );
   }
 }
-
