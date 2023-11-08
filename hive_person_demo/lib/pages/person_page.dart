@@ -4,6 +4,7 @@ import 'package:hive_image_example/models/person.dart';
 
 
 class PersonPage extends StatefulWidget {
+
   const PersonPage({super.key});
 
   @override
@@ -15,15 +16,18 @@ class _PersonPageState extends State<PersonPage> {
 
   late Box<Person>  box ;
 
-  // Hive.box('persons'); // ERROR
-  // Hive.box<Dog>('persons'); // ERROR
-
-
 
   @override
   void initState()  {
-    init();
+    Hive.registerAdapter(PersonAdapter());
+    _init();
     super.initState();
+  }
+
+  Future<void> _init() async {
+    box = await Hive.openBox<Person>('persons');
+    // Hive.box('persons'); // ERROR
+    // Hive.box<Dog>('persons'); // ERROR
   }
 
   @override
@@ -92,9 +96,7 @@ class _PersonPageState extends State<PersonPage> {
     super.dispose();
   }
 
-  Future<void> init() async {
-     box = await Hive.openBox<Person>('persons');
-  }
+
 
 
 }

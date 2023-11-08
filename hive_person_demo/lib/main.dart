@@ -6,8 +6,8 @@ import 'pages/person_page.dart';
 void main() async {
 
   await Hive.initFlutter();
-  Hive.registerAdapter(PersonAdapter());
- await Hive.openBox<Person>("persons");
+
+
   runApp(const MyApp());
 }
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Hive Example',
       home: PersonPage(),
     );
