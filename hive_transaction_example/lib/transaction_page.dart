@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_transaction_example/boxes.dart';
-import 'package:hive_transaction_example/transaction_dialog.dart';
 
 import 'transaction.dart';
 
@@ -48,9 +47,9 @@ class _TransactionPageState extends State<TransactionPage> {
       ),
       floatingActionButton:  FloatingActionButton(
         onPressed: (){
-          showDialog(context: context, builder: TransactionDialog)
+          showDialog(context: context, builder: TransactionDialog);
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
