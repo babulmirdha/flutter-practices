@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
   Future<String> fetchData() async {
+
+
     await Future.delayed(Duration(seconds: 2)); // Simulating a time-consuming operation
+
     return "Data loaded successfully!";
   }
 
@@ -26,9 +30,11 @@ class MyApp extends StatelessWidget {
                 case ConnectionState.waiting:
                   return CircularProgressIndicator();
                 case ConnectionState.done:
-                  if (snapshot.hasError)
+                  if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
+                  }
                   return Text('Result: ${snapshot.data}');
+
               }
             },
           ),
