@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title:  Text(AppLocalizations.of(context)!.lenguage),
+        title:  Text(AppLocalizations.of(context)!.language),
         actions: [
           Switch(value:positive, onChanged:(value){
             positive=value;
