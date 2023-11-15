@@ -4,7 +4,7 @@ import 'model/transaction.dart';
 import 'page/transaction_page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
 
