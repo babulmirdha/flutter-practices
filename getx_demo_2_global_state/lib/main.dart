@@ -58,9 +58,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.increment();
-        },
+        onPressed: controller.increment,
         child: const Icon(Icons.add),
       ),
     );
