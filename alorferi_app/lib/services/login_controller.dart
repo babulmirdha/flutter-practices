@@ -1,9 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:alorferi_app/pages/library_list_page.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
+import '../constants/endpoints.dart';
+import '../constants/urls.dart';
+import '../utils/CertReader.dart';
 
 class LoginController extends GetxController {
   var isLoading = false.obs;
@@ -14,47 +18,12 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
+    CertReader.initialize();
     super.onInit();
   }
 
-
-
-
-  // Future<void> loginX(String username, String password) async {
-  //   try {
-  //     isLoading(true);
-  //
-  //     final response = await http.post(
-  //       Uri.parse('https://backoffice.alorferi.com/api/auth/login'),
-  //       body: {
-  //         'username': username,
-  //         'password': password,
-  //       },
-  //     );
-  //
-  //     if (response.statusCode == 200) {
-  //       final Map<String, dynamic> data = json.decode(response.body);
-  //       token(data['token']);
-  //
-  //       // You can navigate to another page or perform other actions here
-  //       Get.snackbar('Success', 'Login successful');
-  //     } else {
-  //       // Failed login
-  //       Get.snackbar('Error', 'Invalid credentials');
-  //     }
-  //   } catch (error) {
-  //     print('Error during login: $error');
-  //     Get.snackbar('Error', 'An error occurred during login');
-  //   } finally {
-  //     isLoading(false);
-  //   }
-  // }
-
   Future<void> login(String username, String password) async {
     try {
-      // Load the server's certificate (in PEM format) from an asset file
-      final ByteData data = await rootBundle.load('assets/certs/alorferi_com.cer');
-      final Uint8List certBytes = data.buffer.asUint8List();
 
       // Configure Dio to use the loaded certificate
       (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -63,13 +32,14 @@ class LoginController extends GetxController {
             (X509Certificate cert, String host, int port) {
           // Compare the server's certificate with the pinned certificate
           // You can replace this with your own logic for certificate verification
-          return cert.pem == String.fromCharCodes(certBytes);
+          return cert.pem == String.fromCharCodes(CertReader.getCertData());
         };
       };
 
       // Make the network request
+    String url = '${Urls.apiServerBaseUrl}${Endpoints.login}';
     final response = await _dio.post(
-        'https://backoffice.alorferi.com/api/auth/login',
+        url,
         data: {
           'username': username,
           'password': password,
@@ -84,6 +54,9 @@ class LoginController extends GetxController {
         //
         print(data);
         token(data['data']['token']);
+
+        // Navigate to the employee page
+        Get.offAll(() => LibraryListPage()); // Replace EmployeePage with the actual page you want to navigate to
 
         // You can navigate to another page or perform other actions here
         Get.snackbar('Success', 'Login successful');

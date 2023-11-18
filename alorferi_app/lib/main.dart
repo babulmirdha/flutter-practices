@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'CertReader.dart';
-import 'LoginPage.dart';
+import 'utils/CertReader.dart';
+import 'pages/login_page.dart';
 
 Future<void> main() async {
 

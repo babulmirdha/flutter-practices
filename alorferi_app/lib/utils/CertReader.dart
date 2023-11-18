@@ -11,4 +11,15 @@ abstract class CertReader {
   static ByteData? getCert() {
     return cert;
   }
+
+  static Uint8List getCertData(){
+
+
+    final Uint8List certBytes = cert!.buffer.asUint8List();
+
+
+    return certBytes;
+
+  }
+
 }

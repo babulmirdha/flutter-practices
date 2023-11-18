@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'LoginController.dart';
+import '../services/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
+
   final LoginController loginController = Get.put(LoginController());
   final TextEditingController usernameController = TextEditingController(text:"");
   final TextEditingController passwordController = TextEditingController(text:"");
+
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login Page'),
+        title: const Text('Login Page'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -21,20 +24,20 @@ class LoginPage extends StatelessWidget {
           children: [
             TextField(
               controller: usernameController,
-              decoration: InputDecoration(labelText: 'Username'),
+              decoration: const InputDecoration(labelText: 'Username'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: passwordController,
               obscureText: true,
-              decoration: InputDecoration(labelText: 'Password'),
+              decoration: const InputDecoration(labelText: 'Password'),
             ),
-            SizedBox(height: 32.0),
+            const SizedBox(height: 32.0),
             Obx(() => ElevatedButton(
               onPressed: loginController.isLoading() ? null : () => _login(),
-              child: loginController.isLoading() ? CircularProgressIndicator() : Text('Login'),
+              child: loginController.isLoading() ? const CircularProgressIndicator() : const Text('Login'),
             )),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Obx(() => Text('Token: ${loginController.token}')),
           ],
         ),
