@@ -9,12 +9,13 @@ import '../controllers/library_controller.dart';
 class LibraryListPage extends StatelessWidget {
   final LibraryController libraryController = Get.put(LibraryController());
 
-  LibraryListPage({super.key});
+  LibraryListPage({Key? key}) : super(key: key){
+    libraryController.fetchLibraries();
+  }
 
   @override
   Widget build(BuildContext context) {
 
-    libraryController.fetchLibraries();
 
     return Scaffold(
       appBar: AppBar(

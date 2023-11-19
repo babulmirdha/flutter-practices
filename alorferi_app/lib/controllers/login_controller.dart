@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../constants/endpoints.dart';
 import '../constants/urls.dart';
+import '../pages/library_list_paginate.dart';
 import '../utils/CertReader.dart';
 
 class LoginController extends GetxController {
@@ -15,12 +16,6 @@ class LoginController extends GetxController {
 
   final Dio _dio = Dio();
 
-
-  @override
-  void onInit() {
-    CertReader.initialize();
-    super.onInit();
-  }
 
   Future<void> login(String username, String password) async {
     try {
@@ -56,7 +51,7 @@ class LoginController extends GetxController {
         token(data['data']['token']);
 
         // Navigate to the employee page
-        Get.offAll(() => LibraryListPage()); // Replace EmployeePage with the actual page you want to navigate to
+        Get.offAll(() => LibraryListPaginate()); // Replace EmployeePage with the actual page you want to navigate to
 
         // You can navigate to another page or perform other actions here
         Get.snackbar('Success', 'Login successful');

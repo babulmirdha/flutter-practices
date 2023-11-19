@@ -4,13 +4,13 @@ import 'package:alorferi_app/constants/endpoints.dart';
 import 'package:alorferi_app/models/address.dart';
 import 'package:alorferi_app/models/district.dart';
 import 'package:alorferi_app/models/police_station.dart';
+import 'package:alorferi_app/services/library_sercice.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:get/get.dart';
 import '../constants/urls.dart';
 import '../models/library.dart';
 import '../models/object_wrapper.dart';
-import '../services/library_service.dart';
 import '../utils/CertReader.dart';
 import 'login_controller.dart';
 
@@ -24,26 +24,51 @@ class LibraryController extends GetxController {
   var libraryList = <Library>[].obs;
   var selectedLibrary = Library().obs;
 
+  var nextPage = 1.obs;
+  var pageSize = 15;
+
   var library = Library(
           id: '',
           logo_url: '',
           name: '',
-          address: Address(
-              policeStation: PoliceStation(id: '', name: ""),
-              district: District(id: "", name: "")))
+          // address: Address(
+          //     policeStation: PoliceStation(id: '', name: ""),
+          //     district: District(id: "", name: ""))
+  )
       .obs;
+
+  late LibraryService _libraryService;
 
  // late LibraryService _libService;
 
   @override
   void onInit() {
-    token = loginController.token;
-    _dio.options.headers['Authorization'] = 'Bearer $token';
-   // _libService = LibraryService(dio: _dio);
+
+    _libraryService = LibraryService();
+
     super.onInit();
   }
 
   Future<void> fetchLibraries() async {
+    try {
+      isLoading(true);
+      final listPagingWrapper = await _libraryService.fetchLibraries(nextPage.value, pageSize);
+      libraryList.addAll(listPagingWrapper?.list);
+      nextPage.value = listPagingWrapper!.current_page+1;
+      print("current_page: ${listPagingWrapper.current_page}, Next: ${nextPage.value}, last_page: ${listPagingWrapper.last_page}");
+    } catch (error, stack) {
+      print('Error fetching Libraries: $error, $stack');
+    } finally {
+      isLoading(false);
+    }
+  }
+
+  void loadMore() {
+    // currentPage.value++;
+    fetchLibraries();
+  }
+
+  Future<void> fetchLibrariesX() async {
     try {
       // Configure Dio to use the loaded certificate
       (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
