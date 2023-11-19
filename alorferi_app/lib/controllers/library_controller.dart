@@ -9,11 +9,12 @@ import 'package:dio/io.dart';
 import 'package:get/get.dart';
 import '../constants/urls.dart';
 import '../models/library.dart';
+import '../models/object_wrapper.dart';
+import '../services/library_service.dart';
 import '../utils/CertReader.dart';
 import 'login_controller.dart';
 
 class LibraryController extends GetxController {
-
   var loginController = Get.find<LoginController>();
 
   final Dio _dio = Dio();
@@ -21,6 +22,7 @@ class LibraryController extends GetxController {
   var isLoading = false.obs;
   var token = "".obs;
   var libraryList = <Library>[].obs;
+  var selectedLibrary = Library().obs;
 
   var library = Library(
           id: '',
@@ -31,11 +33,13 @@ class LibraryController extends GetxController {
               district: District(id: "", name: "")))
       .obs;
 
+ // late LibraryService _libService;
+
   @override
   void onInit() {
     token = loginController.token;
     _dio.options.headers['Authorization'] = 'Bearer $token';
-    // fetchLibraries();
+   // _libService = LibraryService(dio: _dio);
     super.onInit();
   }
 
@@ -61,10 +65,12 @@ class LibraryController extends GetxController {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data['data'];
-        libraryList.assignAll(data.map((e) => Library.fromMap(e)).toList());
+        libraryList.assignAll(data
+            .map((e) => Library.fromJson(ObjectWrapper.fromJson(e).attributes))
+            .toList());
 
         // You can navigate to another page or perform other actions here
-        Get.snackbar('Success', 'Login successful');
+        // Get.snackbar('Success', 'Login successful');
       } else {
         // Failed login
         Get.snackbar('Error', 'Invalid credentials');
@@ -78,8 +84,7 @@ class LibraryController extends GetxController {
     }
   }
 
-
-  Future<void> fetchLibrary(String id) async {
+  Future<void> fetchLibrary(String? id) async {
     try {
       // Configure Dio to use the loaded certificate
       (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -100,11 +105,13 @@ class LibraryController extends GetxController {
       print("response.data ${response}");
 
       if (response.statusCode == 200) {
-        final List<dynamic> data = response.data['data'];
-        libraryList.assignAll(data.map((e) => Library.fromMap(e)).toList());
+        final Map<String, dynamic> data = response.data['data'];
+
+        selectedLibrary.value =
+            Library.fromJson(ObjectWrapper.fromJson(data).attributes);
 
         // You can navigate to another page or perform other actions here
-        Get.snackbar('Success', 'Login successful');
+        Get.snackbar('Success', 'Fetched Library List successful');
       } else {
         // Failed login
         Get.snackbar('Error', 'Invalid credentials');

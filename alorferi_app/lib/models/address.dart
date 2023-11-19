@@ -1,7 +1,15 @@
 import 'package:alorferi_app/models/district.dart';
 import 'package:alorferi_app/models/police_station.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'address.g.dart';
+
+/// An annotation for the code generator to know that this class needs the
+/// JSON serialization logic to be generated.
+@JsonSerializable()
 class Address {
+
+  @JsonKey(name: 'police_station')
   final PoliceStation policeStation;
   final District district;
 
@@ -10,14 +18,8 @@ class Address {
       required this.policeStation,
       required this.district});
 
-  factory Address.fromMap(Map map) {
+  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
 
-    var ps =map['police_station'];
-    var dist = map['district'];
+  Map<String, dynamic> toJson() => _$AddressToJson(this);
 
-    return Address(
-        policeStation:
-            PoliceStation.fromMap(ps),
-        district: District.fromMap(dist));
-  }
 }

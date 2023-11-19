@@ -1,3 +1,11 @@
+
+import 'package:json_annotation/json_annotation.dart';
+
+part 'police_station.g.dart';
+
+/// An annotation for the code generator to know that this class needs the
+/// JSON serialization logic to be generated.
+@JsonSerializable()
 class PoliceStation{
 
   final String id;
@@ -5,11 +13,7 @@ class PoliceStation{
 
   PoliceStation({required this.id, required this.name});
 
-  factory PoliceStation.fromMap(Map map) {
+  factory PoliceStation.fromJson(Map<String, dynamic> json) => _$PoliceStationFromJson(json);
 
-    return PoliceStation(
-        id: map['id'],
-        name: map['name']);
-  }
-
+  Map<String, dynamic> toJson() => _$PoliceStationToJson(this);
 }

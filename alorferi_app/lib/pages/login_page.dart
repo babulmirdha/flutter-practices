@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../services/login_controller.dart';
+import '../controllers/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
 
   final LoginController loginController = Get.put(LoginController());
-  final TextEditingController usernameController = TextEditingController(text:"");
+  final TextEditingController usernameController = TextEditingController(text:"+8801616983473");
   final TextEditingController passwordController = TextEditingController(text:"");
 
   LoginPage({super.key});
@@ -37,8 +37,8 @@ class LoginPage extends StatelessWidget {
               onPressed: loginController.isLoading() ? null : () => _login(),
               child: loginController.isLoading() ? const CircularProgressIndicator() : const Text('Login'),
             )),
-            const SizedBox(height: 16.0),
-            Obx(() => Text('Token: ${loginController.token}')),
+            // const SizedBox(height: 16.0),
+            // Obx(() => Text('Token: ${loginController.token}')),
           ],
         ),
       ),

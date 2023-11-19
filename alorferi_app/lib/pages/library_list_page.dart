@@ -1,8 +1,10 @@
+import 'package:alorferi_app/constants/endpoints.dart';
 import 'package:alorferi_app/constants/urls.dart';
+import 'package:alorferi_app/pages/library_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../services/library_controller.dart';
+import '../controllers/library_controller.dart';
 
 class LibraryListPage extends StatelessWidget {
   final LibraryController libraryController = Get.put(LibraryController());
@@ -30,14 +32,17 @@ class LibraryListPage extends StatelessWidget {
               final library = libraryController.libraryList[index];
               return InkWell(
                 onTap: (){
+                  libraryController.selectedLibrary.value = library;
+
+                  Get.to(() => LibraryDetailsPage());
 
                 },
                 child: ListTile(
                   leading: Image.network(
-                      "${Urls.apiServerBaseUrl}${library.logo_url}"),
-                  title: Text(library.name),
+                      "${Urls.apiServerBaseUrl}${library.logo_url ?? Endpoints.blankLibraryLogoUri}"),
+                  title: Text(library.name ?? "" ),
                   subtitle: Text(
-                      "${library.address.policeStation.name}, ${library.address.district.name}"),
+                      "${library.address?.policeStation.name}, ${library.address?.district.name}"),
                   // Display other properties as needed
                 ),
               );
