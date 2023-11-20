@@ -1,9 +1,6 @@
 import 'dart:io';
 
 import 'package:alorferi_app/constants/endpoints.dart';
-import 'package:alorferi_app/models/address.dart';
-import 'package:alorferi_app/models/district.dart';
-import 'package:alorferi_app/models/police_station.dart';
 import 'package:alorferi_app/services/library_sercice.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
