@@ -11,28 +11,33 @@ import 'package:sqflite/sqflite.dart';
 
 late Future<Database> database;
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+   WidgetsFlutterBinding.ensureInitialized();
+
+   initDb();
+
+  runApp(const MyApp());
+}
+
+Future<void> initDb() async {
 
   // Open the database and store the reference.
   database = openDatabase(
     // Set the path to the database. Note: Using the `join` function from the
     // `path` package is best practice to ensure the path is correctly
     // constructed for each platform.
-    join(await getDatabasesPath(), 'travel_database.db'),
-    // When the database is first created, create a table to store travels.
-    onCreate: (db, version) {
-      // Run the CREATE TABLE statement on the database.
-      return db.execute(
-        'CREATE TABLE travels(id INTEGER PRIMARY KEY autoincrement, name TEXT, picture BLOB)',
-      );
-    },
-    // Set the version. This executes the onCreate function and provides a
-    // path to perform database upgrades and downgrades.
-    version: 1,
+      join(await getDatabasesPath(), 'travel_database.db'),
+  // When the database is first created, create a table to store travels.
+  onCreate: (db, version) {
+  // Run the CREATE TABLE statement on the database.
+  return db.execute(
+  'CREATE TABLE travels(id INTEGER PRIMARY KEY autoincrement, name TEXT, picture BLOB)',
   );
-
-  runApp(const MyApp());
+  },
+  // Set the version. This executes the onCreate function and provides a
+  // path to perform database upgrades and downgrades.
+  version: 1,
+  );
 }
 
 class MyApp extends StatelessWidget {

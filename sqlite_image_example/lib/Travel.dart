@@ -13,6 +13,7 @@ class Travel{
   // Convert a Dog into a Map. The keys must correspond to the names of the
   // columns in the database.
   Map<String, dynamic> toMap() {
+
    var map = {
       'name': name,
      "picture" : picture,
