@@ -16,9 +16,9 @@ class Library {
   String? logo_url;
   String? web_site_url;
   String? mobile;
-  Address? address;
+  // Address? address;
 
-  Library({this.id, this.logo_url, this.name, this.address, this.mobile, this.web_site_url});
+  Library({this.id, this.logo_url, this.name, this.mobile, this.web_site_url});
 
   factory Library.fromJson(Map<String, dynamic> json) => _$LibraryFromJson(json);
 

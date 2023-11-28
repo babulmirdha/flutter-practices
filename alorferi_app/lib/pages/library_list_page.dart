@@ -48,7 +48,7 @@ class LibraryListPage extends StatelessWidget {
                       "${Urls.apiServerBaseUrl}${library.logo_url ?? Endpoints.blankLibraryLogoUri}"),
                   title: Text(library.name ?? "" ),
                   subtitle: Text(
-                      "${library.address?.policeStation.name}, ${library.address?.district.name}"),
+                      "${library.mobile}"),
                   // Display other properties as needed
                 ),
               );

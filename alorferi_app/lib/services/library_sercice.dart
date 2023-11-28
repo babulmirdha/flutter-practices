@@ -10,7 +10,7 @@ import '../constants/urls.dart';
 import '../models/list_paging_wrapper.dart';
 
 class LibraryService extends BaseService {
-  Future<ListPagingWrapper?> fetchLibraries(int page, int pageSize) async {
+  Future<ListPagingWrapper?> fetchLibraries(int page) async {
     try {
       var endPoint =
           '${Urls.apiServerBaseUrl}${Endpoints.libraryList}?page=$page';
