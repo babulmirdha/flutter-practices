@@ -12,14 +12,14 @@ import '../models/list_paging_wrapper.dart';
 class LibraryService extends BaseService {
   Future<ListPagingWrapper?> fetchLibraries(int page, int pageSize) async {
     try {
-      var endPoint =
+      var url =
           '${Urls.apiServerBaseUrl}${Endpoints.libraryList}?page=$page';
 
-      print(endPoint);
+      print(url);
 
       // Make the network request
       final response = await dio.get(
-        endPoint,
+        url,
       );
 
       if (response.statusCode == 200) {
