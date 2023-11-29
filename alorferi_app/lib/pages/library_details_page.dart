@@ -29,7 +29,7 @@ class LibraryDetailsPage extends StatelessWidget {
                       "${Urls.apiServerBaseUrl}${libraryController.selectedLibrary.value.logo_url ?? Endpoints.blankLibraryLogoUri}"),
                   title: Text(libraryController.selectedLibrary.value.name ?? ""),
                   subtitle: Text(
-                      "${libraryController.selectedLibrary.value.address?.policeStation.name}, ${libraryController.selectedLibrary.value.address?.district.name}"),
+                      "${libraryController.selectedLibrary.value.mobile}"),
                   // Display other properties as needed
                 )),
           ),

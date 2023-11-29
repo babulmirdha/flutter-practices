@@ -21,26 +21,24 @@ class LibraryController extends GetxController {
   var libraryList = <Library>[].obs;
   var selectedLibrary = Library().obs;
 
-  var nextPage = 1.obs;
-  var pageSize = 15;
+  var nextPage = 1;
+  var lastPage = 15;
 
   var library = Library(
-          id: '',
-          logo_url: '',
-          name: '',
-          // address: Address(
-          //     policeStation: PoliceStation(id: '', name: ""),
-          //     district: District(id: "", name: ""))
-  )
-      .obs;
+    id: '',
+    logo_url: '',
+    name: '',
+    // address: Address(
+    //     policeStation: PoliceStation(id: '', name: ""),
+    //     district: District(id: "", name: ""))
+  ).obs;
 
   late LibraryService _libraryService;
 
- // late LibraryService _libService;
+  // late LibraryService _libService;
 
   @override
   void onInit() {
-
     _libraryService = LibraryService();
 
     super.onInit();
@@ -48,11 +46,22 @@ class LibraryController extends GetxController {
 
   Future<void> fetchLibraries() async {
     try {
+      if (nextPage > lastPage) {
+        return;
+      }
+
       isLoading(true);
-      final listPagingWrapper = await _libraryService.fetchLibraries(nextPage.value, pageSize);
+
+      final listPagingWrapper = await _libraryService.fetchLibraries(nextPage);
+
       libraryList.addAll(listPagingWrapper?.list);
-      nextPage.value = listPagingWrapper!.current_page+1;
-      print("current_page: ${listPagingWrapper.current_page}, Next: ${nextPage.value}, last_page: ${listPagingWrapper.last_page}");
+
+      nextPage = listPagingWrapper!.current_page + 1;
+      lastPage = listPagingWrapper.last_page;
+
+      print(
+          "current_page: ${listPagingWrapper.current_page}, Next: $nextPage, last_page: ${listPagingWrapper.last_page}");
+
     } catch (error, stack) {
       print('Error fetching Libraries: $error, $stack');
     } finally {
