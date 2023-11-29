@@ -9,9 +9,14 @@ import '../controllers/library_controller.dart';
 class LibraryListPage extends StatelessWidget {
   final LibraryController libraryController = Get.put(LibraryController());
 
-  LibraryListPage({Key? key}) : super(key: key){
-    libraryController.fetchLibraries();
-  }
+   LibraryListPage({super.key}) {
+     libraryController.fetchLibraries();
+   }
+
+  // LibraryListPage({Key? key}) : super(key: key)
+  // {
+  //   libraryController.fetchLibraries();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +48,7 @@ class LibraryListPage extends StatelessWidget {
                       "${Urls.apiServerBaseUrl}${library.logo_url ?? Endpoints.blankLibraryLogoUri}"),
                   title: Text(library.name ?? "" ),
                   subtitle: Text(
-                      "${library.address?.policeStation.name}, ${library.address?.district.name}"),
+                      "${library.mobile}"),
                   // Display other properties as needed
                 ),
               );

@@ -18,6 +18,7 @@ class BaseService{
 
 
    var token = loginController.token;
+
     dio.options.headers['Authorization'] = 'Bearer $token';
 
    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
