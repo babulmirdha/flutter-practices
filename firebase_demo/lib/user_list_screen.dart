@@ -19,7 +19,7 @@ class UserListScreen extends StatefulWidget {
 class _UserListScreenState extends State<UserListScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  var mockUsers = <Map<String, dynamic>>[];
+  var userList = <Map<String, dynamic>>[];
 
   @override
   initState() {
@@ -33,11 +33,11 @@ class _UserListScreenState extends State<UserListScreen> {
       QuerySnapshot userData = await _firestore.collection("users").get();
 
       // Clear existing mockUsers before adding new data
-      mockUsers.clear();
+      // userList.clear();
 
       // Add user data to mockUsers list
       userData.docs.forEach((DocumentSnapshot document) {
-        mockUsers.add(document.data() as Map<String, dynamic>);
+        userList.add(document.data() as Map<String, dynamic>);
       });
 
       setState(() {});
@@ -55,9 +55,9 @@ class _UserListScreenState extends State<UserListScreen> {
         title: Text('User List'),
       ),
       body: ListView.builder(
-        itemCount: mockUsers.length,
+        itemCount: userList.length,
         itemBuilder: (context, index) {
-          var user = mockUsers[index];
+          var user = userList[index];
           return ListTile(
             title: Text(user['name']),
             subtitle: Text(user['email']),

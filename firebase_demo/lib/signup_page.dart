@@ -11,9 +11,11 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
   final TextEditingController _naneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _mobileController = TextEditingController();
 
   Future<void> _signUpWithEmailAndPassword() async {
     try {
@@ -21,15 +23,19 @@ class _SignupScreenState extends State<SignupScreen> {
           .createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
-      )
-          .then((value) async {
+      ).then((value) async {
+
+
         await _firestore.collection("users").doc(value.user!.uid).set({
           "name": _naneController.text,
           "email": _emailController.text,
+          "mobile": _mobileController.text,
         });
 
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginScreen()));
+
+
       });
       print("Sign up successful");
     } catch (e) {
@@ -60,6 +66,10 @@ class _SignupScreenState extends State<SignupScreen> {
               controller: _passwordController,
               decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
+            ),
+            TextField(
+              controller: _mobileController,
+              decoration: InputDecoration(labelText: 'Mobile'),
             ),
             SizedBox(height: 8.0),
             ElevatedButton(
