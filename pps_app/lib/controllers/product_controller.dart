@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:pps_app/constants/Endpoints.dart';
 import 'package:pps_app/models/product.dart';
@@ -13,7 +14,6 @@ class ProductController extends GetxController {
   @override
   void onInit() {
     fetchProductList();
-
     super.onInit();
   }
 
@@ -24,9 +24,7 @@ class ProductController extends GetxController {
       var response = await http.get(url);
 
       if (response.statusCode == 200) {
-
         Map<String, dynamic> dataMap = jsonDecode(response.body);
-
         List<dynamic> jsonList = dataMap['data'];
 
         for (var element in jsonList) {
@@ -34,8 +32,11 @@ class ProductController extends GetxController {
             id: element['id'],
             name: element['name'],
             price: element['price'],
+            imageUrl: element['url']??""
           ));
         }
+        productList.refresh();
+        debugPrint("====> product length : ${productList.length}");
       }
     } catch (e, s) {
       print("error: $e, stack trace: $s");

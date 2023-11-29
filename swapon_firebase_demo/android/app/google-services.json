@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1002994676908",
+    "project_id": "first-project-36bfe",
+    "storage_bucket": "first-project-36bfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002994676908:android:fde4c300cdb1880aa11b09",
+        "android_client_info": {
+          "package_name": "com.example.swapon_firebase_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDST3Vue4RJOMUZoGTfKmrxxKMr27-cDk0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
