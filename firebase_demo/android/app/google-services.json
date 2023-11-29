@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "518800767157",
+    "project_id": "learn-firebase-ed8a2",
+    "storage_bucket": "learn-firebase-ed8a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518800767157:android:5522c7fe9b1f879c2f26fc",
+        "android_client_info": {
+          "package_name": "com.example.firebase_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaE0nLCFuhXZMJSFCn2TWDtg1GGnjx7Rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
