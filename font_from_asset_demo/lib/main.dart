@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -36,10 +36,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class MyHomePage extends StatelessWidget {
-
-
+  final String text = "আমার সোনার বাংলা।\nআমি তোমায় ভালবাসি";
 
   @override
   Widget build(BuildContext context) {
@@ -59,24 +57,32 @@ class MyHomePage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text("Font example"),
       ),
-      body: const Center(
+      body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'আমার সোনার বাংলা। আমি তোমায় ভালবাসি',
-              style: TextStyle(
+              text,
+              style: const TextStyle(
                 fontFamily: 'kalpurush',
                 fontSize: 40.0,
               ),
             ),
+            const SizedBox(width: 1, height: 20),
             Text(
-              'আমার সোনার বাংলা। আমি তোমায় ভালবাসি',
-              style: TextStyle(
+              text,
+              style: const TextStyle(
                 fontFamily: 'nitra',
+                fontSize: 40.0,
+              ),
+            ),
+            const SizedBox(width: 1, height: 20),
+            Text(
+              text,
+              style: const TextStyle(
+                fontFamily: 'ben_sen_handwriting',
                 fontSize: 40.0,
               ),
             ),

@@ -86,6 +86,8 @@ flutter:
          - asset: assets/fonts/mitra.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  #
+     - family: ben_sen_handwriting
+       fonts:
+         - asset: assets/fonts/ben_sen_handwriting.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
