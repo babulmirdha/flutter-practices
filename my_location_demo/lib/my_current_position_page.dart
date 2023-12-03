@@ -18,16 +18,16 @@ class MyCurrentPositionPage extends StatefulWidget {
 }
 
 class _MyCurrentPositionPageState extends State<MyCurrentPositionPage> {
-  String text = "";
+
 
   @override
   void initState() {
-    getLocation();
+
 
     super.initState();
   }
 
-  Future<void> getLocation() async {
+  Future<String> _getLocation() async {
     try {
       LocationPermission permission = await Geolocator.requestPermission();
 
@@ -36,12 +36,8 @@ class _MyCurrentPositionPageState extends State<MyCurrentPositionPage> {
           desiredAccuracy: LocationAccuracy.high,
         );
 
-        setState(() {
-          text =
-          'Latitude: ${position.latitude}, Longitude: ${position.longitude}';
-        });
+       return  'Latitude: ${position.latitude}, Longitude: ${position.longitude}';
 
-        print(text);
       } else {
         // Handle the case where the user denied or didn't grant the location permission
       }
@@ -49,6 +45,8 @@ class _MyCurrentPositionPageState extends State<MyCurrentPositionPage> {
       // Handle exceptions, if any
       print(e.toString());
     }
+
+    return "";
   }
 
   @override
@@ -69,31 +67,33 @@ class _MyCurrentPositionPageState extends State<MyCurrentPositionPage> {
         title: const Text("My Current Position"),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              text,
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        // Using FutureBuilder to handle asynchronous operations
+        child: FutureBuilder<String>(
+          // The future to wait for
+          future: _getLocation(),
+          // Builder function with three parameters:
+          // context: the build context
+          // snapshot: the latest result of the future
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+              // If the future is not yet requested or in progress
+                return Text('Press button to start.');
+              case ConnectionState.active:
+              case ConnectionState.waiting:
+              // If the future is still in progress
+                return CircularProgressIndicator();
+              case ConnectionState.done:
+              // If the future is completed
+                if (snapshot.hasError) {
+                  // If an error occurred during the future execution
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  // If the future completed successfully
+                  return Text('Lat: ${snapshot.data}');
+                }
+            }
+          },
         ),
       ),
     );
