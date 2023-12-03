@@ -54,9 +54,23 @@ class _MyPositionIncludingLocationServiceCheckPageState extends State<MyPosition
           'Location permissions are permanently denied, we cannot request permissions.');
     }
 
+
+    /*
+    Current location:
+    To query the current location of the device simply make a call to the getCurrentPosition method. You can finetune the results by specifying the following parameters:
+
+    desiredAccuracy: the accuracy of the location data that your app wants to receive;
+    timeLimit: the maximum amount of time allowed to acquire the current location. When the time limit is passed a TimeOutException will be thrown and the call will be cancelled. By default no limit is configured.
+
+    return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+     */
+
+
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition();
+
+
   }
 
   @override

@@ -1,42 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-class MyCurrentPositionPage extends StatefulWidget {
-  const MyCurrentPositionPage({super.key});
+class LastKnownLocationPage extends StatefulWidget {
+  const LastKnownLocationPage({super.key});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   @override
-  State<MyCurrentPositionPage> createState() => _MyCurrentPositionPageState();
+  State<LastKnownLocationPage> createState() => _LastKnownLocationPageState();
 }
 
-class _MyCurrentPositionPageState extends State<MyCurrentPositionPage> {
+class _LastKnownLocationPageState extends State<LastKnownLocationPage> {
 
 
   @override
   void initState() {
-
-
     super.initState();
   }
 
-  Future<String> _getLocation() async {
+  Future<String> _getLastKnownPosition() async {
     try {
       LocationPermission permission = await Geolocator.requestPermission();
 
       if (permission == LocationPermission.whileInUse) {
-        Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high,
-        );
+        Position? position = await Geolocator.getLastKnownPosition();;
 
-       return  'Latitude: ${position.latitude}, Longitude: ${position.longitude}';
+       return  'Last Known Location:\n Lat: ${position?.latitude}, Lon: ${position?.longitude}';
 
       } else {
         // Handle the case where the user denied or didn't grant the location permission
@@ -64,13 +52,13 @@ class _MyCurrentPositionPageState extends State<MyCurrentPositionPage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: const Text("My Current Position"),
+        title: const Text("Last Known Location"),
       ),
       body: Center(
         // Using FutureBuilder to handle asynchronous operations
         child: FutureBuilder<String>(
           // The future to wait for
-          future: _getLocation(),
+          future: _getLastKnownPosition(),
           // Builder function with three parameters:
           // context: the build context
           // snapshot: the latest result of the future
@@ -90,7 +78,7 @@ class _MyCurrentPositionPageState extends State<MyCurrentPositionPage> {
                   return Text('Error: ${snapshot.error}');
                 } else {
                   // If the future completed successfully
-                  return Text('My Current Position\n ${snapshot.data}');
+                  return Text('${snapshot.data}');
                 }
             }
           },
