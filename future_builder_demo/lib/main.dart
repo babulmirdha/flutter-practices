@@ -83,13 +83,34 @@ class _MyHomePageState extends State<MyHomePage> {
       body: FutureBuilder(
         future: fetchData(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator(); // Loading indicator while waiting for the future to complete
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else {
-            return Text('Data: ${snapshot.data}');
+
+
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            // If the future is not yet requested or in progress
+              return Text('Press button to start.');
+            case ConnectionState.active:
+            case ConnectionState.waiting:
+            // If the future is still in progress
+              return CircularProgressIndicator();
+            case ConnectionState.done:
+            // If the future is completed
+              if (snapshot.hasError) {
+                // If an error occurred during the future execution
+                return Text('Error: ${snapshot.error}');
+              } else {
+                // If the future completed successfully
+                return Text('Data: ${snapshot.data}');
+              }
           }
+
+          // if (snapshot.connectionState == ConnectionState.waiting) {
+          //   return const CircularProgressIndicator(); // Loading indicator while waiting for the future to complete
+          // } else if (snapshot.hasError) {
+          //   return Text('Error: ${snapshot.error}');
+          // } else {
+          //   return Text('Data: ${snapshot.data}');
+          // }
         },
       )
 

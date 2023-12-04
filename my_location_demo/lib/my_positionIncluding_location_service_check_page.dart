@@ -77,7 +77,7 @@ class _MyPositionIncludingLocationServiceCheckPageState extends State<MyPosition
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DeterminePosition Example'),
+        title: Text('Determine My Position'),
       ),
       body: Center(
         // Using FutureBuilder to handle asynchronous operations
