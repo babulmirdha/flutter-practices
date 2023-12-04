@@ -15,7 +15,7 @@ class User {
 }
 
 class MyApp extends StatelessWidget {
-  final User currentUser = User(name: "John Doe", isAdmin: false);
+  final User currentUser = User(name: "John Doe", isAdmin: true);
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +24,23 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('User-specific UI'),
         ),
-        body: buildUserSpecificUI(),
+        body:   changeUi()
+    ,
       ),
     );
   }
 
-  Widget buildUserSpecificUI() {
-    if (currentUser.isAdmin) {
-      return AdminUI(user: currentUser);
-    } else {
-      return RegularUI(user: currentUser);
-    }
-  }
-}
+  StatelessWidget changeUi() =>  (currentUser.isAdmin)? AdminPage(user: currentUser) : UserPage(user: currentUser);
+
+//   Widget buildUserSpecificUI() {
+//     if (currentUser.isAdmin) {
+//       return AdminUI(user: currentUser);
+//     } else {
+//       return RegularUI(user: currentUser);
+//     }
+//   }
+
+ }
 
 
 

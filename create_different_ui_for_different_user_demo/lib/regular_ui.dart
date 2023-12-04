@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'main.dart';
 
-class RegularUI extends StatelessWidget {
+class UserPage extends StatelessWidget {
   final User user;
 
-  RegularUI({required this.user});
+  UserPage({required this.user});
 
   @override
   Widget build(BuildContext context) {

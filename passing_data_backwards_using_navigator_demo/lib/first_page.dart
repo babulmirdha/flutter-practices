@@ -43,7 +43,7 @@ class _FirstPageState extends State<FirstPage> {
                   dataFromSecondPage = result ?? ''; // Use empty string if result is null
                 });
               },
-              child: Text('Go to Child Screen'),
+              child: Text('Go to Second Page'),
             ),
           ],
         ),

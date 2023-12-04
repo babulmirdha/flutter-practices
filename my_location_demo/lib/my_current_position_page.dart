@@ -4,15 +4,6 @@ import 'package:geolocator/geolocator.dart';
 class MyCurrentPositionPage extends StatefulWidget {
   const MyCurrentPositionPage({super.key});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   @override
   State<MyCurrentPositionPage> createState() => _MyCurrentPositionPageState();
 }
@@ -36,7 +27,7 @@ class _MyCurrentPositionPageState extends State<MyCurrentPositionPage> {
           desiredAccuracy: LocationAccuracy.high,
         );
 
-       return  'Latitude: ${position.latitude}, Longitude: ${position.longitude}';
+       return  'Latitude: ${position.latitude}, Longitude: ${position.longitude}, Altitude: ${position.altitude}';
 
       } else {
         // Handle the case where the user denied or didn't grant the location permission
