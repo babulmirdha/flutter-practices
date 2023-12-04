@@ -2,15 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-class MyPositionIncludingLocationSerciceCheckPage extends StatefulWidget {
+class MyPositionIncludingLocationServiceCheckPage extends StatefulWidget {
 
-  const MyPositionIncludingLocationSerciceCheckPage({super.key});
+  const MyPositionIncludingLocationServiceCheckPage({super.key});
 
   @override
-  State<MyPositionIncludingLocationSerciceCheckPage> createState() => _MyPositionIncludingLocationServiceCheckPageState();
+  State<MyPositionIncludingLocationServiceCheckPage> createState() => _MyPositionIncludingLocationServiceCheckPageState();
 }
 
-class _MyPositionIncludingLocationServiceCheckPageState extends State<MyPositionIncludingLocationSerciceCheckPage> {
+class _MyPositionIncludingLocationServiceCheckPageState extends State<MyPositionIncludingLocationServiceCheckPage> {
 
 
   @override

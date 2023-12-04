@@ -11,7 +11,7 @@ class MasterPage extends StatelessWidget {
   
  final _widgetList = <Widget>[
    const MyCurrentPositionPage(),
-   const MyPositionIncludingLocationSerciceCheckPage(),
+   const MyPositionIncludingLocationServiceCheckPage(),
    const LastKnownLocationPage(),
    const LocationUpdatePage(),
  ];
