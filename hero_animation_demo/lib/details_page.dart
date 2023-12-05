@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class DetailPage extends StatelessWidget {
-  final String heroTag;
+class DetailsPage extends StatelessWidget {
+  final String tagName;
 
-  const DetailPage({super.key, required this.heroTag});
+  const DetailsPage({super.key, required this.tagName});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail Page'),
+        title: const Text('Details Page'),
       ),
       body: Center(
         child: Hero(
-          tag: heroTag,
+          tag: tagName,
           child: Container(
             color: Colors.blue,
             height: 300.0,

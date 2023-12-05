@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
 class UserDetailsPage extends StatelessWidget {
-  final String heroTag;
+  final String tagName;
 
-  UserDetailsPage({super.key, required this.heroTag});
+  const UserDetailsPage({super.key, required this.tagName});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Screen 2'),
+        title: const Text('User Details'),
       ),
       body: Center(
         child: Hero(
-          tag: heroTag,
+          tag: tagName,
           child: SingleChildScrollView(
             child: Center(
               child: Column(
                 children: [
                   Image.asset("assets/babulmirdha.png"),
-                  Text("Md Babul Mirdha")
+                  const Text("Md Babul Mirdha")
                 ],
               ),
             ),

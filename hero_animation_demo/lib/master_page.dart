@@ -1,4 +1,4 @@
-import 'package:animation_demo/detail_page.dart';
+import 'package:animation_demo/details_page.dart';
 import 'package:flutter/material.dart';
 
 import 'user_details_page.dart';
@@ -20,7 +20,7 @@ class MasterPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DetailPage(heroTag: 'uniqueTag'),
+                    builder: (context) => DetailsPage(tagName: 'uniqueTag'),
                   ),
                 );
               },
@@ -39,7 +39,7 @@ class MasterPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UserDetailsPage(heroTag: 'userTag'),
+                    builder: (context) => UserDetailsPage(tagName: 'userTag'),
                   ),
                 );
               },
