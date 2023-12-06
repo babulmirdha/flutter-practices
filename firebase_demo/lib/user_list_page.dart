@@ -9,14 +9,15 @@ class User {
   User({required this.id, required this.name, required this.email});
 }
 
-class UserListScreen extends StatefulWidget {
-  UserListScreen({super.key});
+class UserListPage extends StatefulWidget {
+
+  UserListPage({super.key});
 
   @override
-  State<UserListScreen> createState() => _UserListScreenState();
+  State<UserListPage> createState() => _UserListPageState();
 }
 
-class _UserListScreenState extends State<UserListScreen> {
+class _UserListPageState extends State<UserListPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   var userList = <Map<String, dynamic>>[];

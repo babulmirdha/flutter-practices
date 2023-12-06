@@ -3,14 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_demo/signup_page.dart';
 import 'package:flutter/material.dart';
 
-import 'user_list_screen.dart';
+import 'user_list_page.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginPageState extends State<LoginPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
         password: _passwordController.text,
       );
 
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> UserListScreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> UserListPage()));
 
       print("Sign in successful");
     } catch (e) {
