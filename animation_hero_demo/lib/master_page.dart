@@ -39,12 +39,12 @@ class MasterPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UserDetailsPage(tagName: 'userTag'),
+                    builder: (context) => UserDetailsPage(tagName: 'userUniqueTag'),
                   ),
                 );
               },
               child: Hero(
-                tag: 'userTag',
+                tag: 'userUniqueTag',
                 child: Image.asset("assets/babulmirdha.png",width: 100, height: 100,),
               ),
             ),
