@@ -33,18 +33,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Master-Detail Example'),
         ),
-        body: Row(
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: MasterListWidget(items: items, onItemSelected: _onItemSelected),
-            ),
-            Expanded(
-              flex: 3,
-              child: Container(), // Initial empty detail view
-            ),
-          ],
-        ),
+        body: MasterListWidget(items: items, onItemSelected: _onItemSelected),
       ),
     );
   }
