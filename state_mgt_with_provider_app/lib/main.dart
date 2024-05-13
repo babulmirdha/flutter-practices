@@ -14,9 +14,9 @@ class CounterModel extends ChangeNotifier {
 }
 
 // Define a widget that uses the Provider to access the state
-class CounterPage extends StatelessWidget {
+class MyHomePage extends StatelessWidget {
 
-  const CounterPage({super.key});
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ void main() {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const CounterPage(),
+        home: const MyHomePage(),
       ),
     ),
   );
