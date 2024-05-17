@@ -20,19 +20,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'SharedPreferences Demo',
-      home: SharedPreferencesDemo(),
+      home: MyHomePage(),
     );
   }
 }
 
-class SharedPreferencesDemo extends StatefulWidget {
-  const SharedPreferencesDemo({super.key});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
   @override
-  SharedPreferencesDemoState createState() => SharedPreferencesDemoState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class SharedPreferencesDemoState extends State<SharedPreferencesDemo> {
+class MyHomePageState extends State<MyHomePage> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late Future<int> _counter;
 

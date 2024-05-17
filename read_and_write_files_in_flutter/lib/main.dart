@@ -8,7 +8,7 @@ void main() {
   runApp(
     MaterialApp(
       title: 'Reading and Writing Files',
-      home: FlutterDemo(storage: CounterStorage()),
+      home: MyHomePage(storage: CounterStorage()),
     ),
   );
 }
@@ -47,16 +47,16 @@ class CounterStorage {
   }
 }
 
-class FlutterDemo extends StatefulWidget {
-  const FlutterDemo({super.key, required this.storage});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.storage});
 
   final CounterStorage storage;
 
   @override
-  State<FlutterDemo> createState() => _FlutterDemoState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _FlutterDemoState extends State<FlutterDemo> {
+class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   @override
