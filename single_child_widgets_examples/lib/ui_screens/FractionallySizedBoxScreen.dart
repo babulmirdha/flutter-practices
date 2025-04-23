@@ -12,7 +12,7 @@ class FractionallySizedBoxScreen extends StatelessWidget  {
       ),
       body: FractionallySizedBox(
         widthFactor: 1, // 100% width of the screen
-        heightFactor: 0.5, // 50% height of the screen
+        heightFactor: .3, // 50% height of the screen
         child: Container(
           color: Colors.green,
         ),

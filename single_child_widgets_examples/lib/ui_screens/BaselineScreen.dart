@@ -20,10 +20,11 @@ class BaselineScreen extends StatelessWidget  {
               const Row(
                 children: <Widget>[
                   Baseline(
-                    baseline: 30,
+                    baseline: 80,
                     baselineType: TextBaseline.alphabetic,
                     child: Icon(Icons.star, size: 40),
                   ),
+                  // Icon(Icons.star, size: 40),
                   Text('Star'),
                 ],
               ),
@@ -53,16 +54,21 @@ class BaselineScreen extends StatelessWidget  {
               ),
               const Column(
                 children: <Widget>[
-                  Baseline(
-                    baseline: 20,
-                    baselineType: TextBaseline.alphabetic,
-                    child: Text('Text 1'),
-                  ),
-                  Baseline(
-                    baseline: 20,
-                    baselineType: TextBaseline.alphabetic,
-                    child: Text('Text 2'),
-                  ),
+                  Row(
+                    children: [
+                      Baseline(
+                        baseline: 20,
+                        baselineType: TextBaseline.alphabetic,
+                        child: Text('Text 1'),
+                      ),
+                      Baseline(
+                        baseline: 30,
+                        baselineType: TextBaseline.alphabetic,
+                        child: Text('Text 2'),
+                      ),
+                    ],
+                  )
+
                 ],
               )
             ],

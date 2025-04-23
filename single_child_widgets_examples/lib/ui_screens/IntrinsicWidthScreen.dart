@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
 
-class IntrinsicWidthScreen extends StatelessWidget  {
-
-  const IntrinsicWidthScreen( {super.key});
+class IntrinsicWidthScreen extends StatelessWidget {
+  const IntrinsicWidthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:  Text(runtimeType.toString()),
-      ),
-      body:    IntrinsicWidth(
-        child: Column(
-          children: <Widget>[
-            Container(width: 50, height: 100, color: Colors.blue),
-            Container(width: 150, height: 50, color: Colors.green),
-            Container(width: 100, height: 70, color: Colors.red),
-          ],
+      appBar: AppBar(title: Text('IntrinsicWidth Example')),
+      body: Center(
+        child: IntrinsicWidth(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Short'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('A much longer button text'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Medium length'),
+              ),
+            ],
+          ),
         ),
-      )
-
-      ,
+      ),
     );
   }
-
 }

@@ -3,6 +3,10 @@
         android:label="single_child_widgets_examples"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <uses-permission android:name="android.permission.INTERNET"/>
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

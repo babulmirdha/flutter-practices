@@ -12,18 +12,27 @@ class AlignScreen extends StatelessWidget  {
       appBar: AppBar(
         title:  Text(runtimeType.toString()),
       ),
-      body: const Column(
+      body: Column(
         children: [
-          Align(
-            alignment: Alignment.topRight,
-            // Aligns the child widget to the top-right corner
-            child: Text("Align: Alignment.topRight"),
+          Container(
+            color: Colors.blue,
+            height: 200,
+            // Sets the background color to blue
+            child: Align(
+              alignment: Alignment.center,
+              // Aligns the child widget to the top-right corner
+              child: Text("Align: Alignment.topRight"),
+            ),
           ),
-          Align(
-            alignment: FractionalOffset(0.5, 0.8),
-            // Aligns the child widget 50% from the left and 80% from the top
+          Container(
+            color: Colors.green,
+            height: 300,
+            child: const Align(
+              alignment: FractionalOffset(0.2, 0.33),
+              // Aligns the child widget 50% from the left and 80% from the top
 
-            child: Text("Align: FractionalOffset"),
+              child: Text("Align: FractionalOffset"),
+            ),
           ),
         ],
       ),
