@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+
 
 class LocationUpdatePage extends StatefulWidget {
   const LocationUpdatePage({super.key});
@@ -12,73 +12,77 @@ class LocationUpdatePage extends StatefulWidget {
 }
 
 class _LocationUpdatePageState extends State<LocationUpdatePage> {
-  late LocationSettings locationSettings;
-  late StreamSubscription<Position> positionStream;
-
-  String text = "";
+  StreamSubscription<Position>? _positionStream;
+  String _locationText = "Waiting for location...";
 
   @override
   void initState() {
     super.initState();
+    _checkPermissionAndStartStream();
+  }
 
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      locationSettings = AndroidSettings(
-        accuracy: LocationAccuracy.high,
-        distanceFilter: 100,
-        forceLocationManager: true,
-        intervalDuration: const Duration(seconds: 10),
-        foregroundNotificationConfig: const ForegroundNotificationConfig(
-          notificationText:
-          "Example app will continue to receive your location even when you aren't using it",
-          notificationTitle: "Running in Background",
-          enableWakeLock: true,
-        ),
-      );
-    } else if (defaultTargetPlatform == TargetPlatform.iOS ||
-        defaultTargetPlatform == TargetPlatform.macOS) {
-      locationSettings = AppleSettings(
-        accuracy: LocationAccuracy.high,
-        activityType: ActivityType.fitness,
-        distanceFilter: 100,
-        pauseLocationUpdatesAutomatically: true,
-        showBackgroundLocationIndicator: false,
-      );
-    } else {
-      locationSettings = LocationSettings(
-        accuracy: LocationAccuracy.high,
-        distanceFilter: 100,
-      );
+  Future<void> _checkPermissionAndStartStream() async {
+    // 1. Check location services
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      setState(() {
+        _locationText = 'Location services are disabled.';
+      });
+      return;
     }
 
-    positionStream =
-        Geolocator.getPositionStream(locationSettings: locationSettings).listen(
-              (Position? position) {
+    // 2. Check permissions
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        setState(() {
+          _locationText = 'Location permissions are denied.';
+        });
+        return;
+      }
+    }
 
-                setState(() {
-                  text =  position == null
-                      ? 'Unknown'
-                      : '${position.latitude.toString()}, ${position.longitude.toString()}';
-                });
+    if (permission == LocationPermission.deniedForever) {
+      setState(() {
+        _locationText =
+        'Location permissions are permanently denied. Go to settings.';
+      });
+      return;
+    }
 
-            print(text);
-          },
-        );
+    // 3. Start location updates
+    LocationSettings locationSettings = const LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 0,
+    );
+
+    _positionStream = Geolocator.getPositionStream(
+      locationSettings: locationSettings,
+    ).listen((Position position) {
+      setState(() {
+        _locationText =
+        'Lat: ${position.latitude}, Lon: ${position.longitude}';
+      });
+    });
   }
 
   @override
   void dispose() {
-    positionStream.cancel(); // Cancel the stream subscription when the widget is disposed
+    _positionStream?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Geolocation App'),
-      ),
+      appBar: AppBar(title: const Text('Live Location')),
       body: Center(
-        child: Text('Listening for location updates:\n$text'),
+        child: Text(
+          _locationText,
+          style: const TextStyle(fontSize: 20),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
