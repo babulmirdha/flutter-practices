@@ -5,6 +5,7 @@ import '../controllers/product_controller.dart';
 class ProductDetailView extends StatelessWidget {
   final controller = Get.find<ProductController>();
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
