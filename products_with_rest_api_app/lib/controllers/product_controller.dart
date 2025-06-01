@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import '../models/product.dart';
-import '../services/api_service.dart';
+import '../services/product_api_service.dart';
 
 class ProductController extends GetxController {
+
   var products = <Product>[].obs;
+
   var selectedProduct = Rxn<Product>();
 
   @override
@@ -13,7 +15,7 @@ class ProductController extends GetxController {
   }
 
   void fetchAll() async {
-    products.value = await ApiService.fetchProducts();
+    products.value = await ProductApiService.fetchProducts();
   }
 
   void select(Product product) {
@@ -21,18 +23,22 @@ class ProductController extends GetxController {
   }
 
   void delete(int id) async {
-    await ApiService.deleteProduct(id);
+    await ProductApiService.deleteProduct(id);
     fetchAll();
     selectedProduct.value = null;
   }
 
+  // REVIEW: Ask team if this logic belongs in ViewModel
   void add(Product product) async {
-    await ApiService.createProduct(product);
-    fetchAll();
+    await ProductApiService.createProduct(product);
+    products.value.insert(0,product);
+    products.refresh(); // Notifies listeners
+   //FIXME: enable if required
+   // fetchAll();
   }
 
   void updateProduct(Product product) async {
-    await ApiService.updateProduct(product);
+    await ProductApiService.updateProduct(product);
     fetchAll();
     selectedProduct.value = null;
   }

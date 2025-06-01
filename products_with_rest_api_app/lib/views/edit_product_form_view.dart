@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../controllers/product_controller.dart';
 import '../models/product.dart';
 
-class ProductFormView extends StatelessWidget {
+class EditProductFormView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final priceController = TextEditingController();

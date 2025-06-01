@@ -10,7 +10,7 @@ class Product {
     id: json['id'],
     name: json['name'],
     price: json['price'].toDouble(),
-    description: json['description'],
+    description: json['description'] ?? "" ,
   );
 
   Map<String, dynamic> toJson() => {
